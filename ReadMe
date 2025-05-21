@@ -1,0 +1,72 @@
+This script is designed to automate the creation of an Azure Active Directory (AAD) App Registration with specific permissions, a client secret, and optional configurations for Exchange Online and Azure RBAC. Here’s what it does step by step:
+
+Description
+Creates an App Registration in AAD:
+
+Registers a new Azure AD application.
+Assigns it a service principal.
+Assigns Permissions:
+
+Default: Microsoft Graph permissions.
+Optional: Exchange Online and Azure RBAC permissions.
+Grants Admin Consent:
+
+Automatically grants admin consent for required permissions.
+Generates a Client Secret:
+
+Creates a client secret valid for 6 months and displays it.
+Outputs Details:
+
+Displays important information like App ID, Tenant ID, and Client Secret for further use.
+Steps and Features
+1. Prerequisites Check
+Ensures the required PowerShell modules are installed:
+Microsoft Graph PowerShell Module.
+Az PowerShell Module (for Azure RBAC).
+ExchangeOnlineManagement Module (for Exchange Online).
+Connects to Microsoft Graph with the necessary permissions.
+2. User Inputs
+Prompts the user for:
+A friendly name for the App Registration.
+Whether to include Exchange Online permissions.
+Whether to include Azure RBAC permissions.
+3. Admin Privilege Check
+Verifies that the user account has one of the following roles:
+Global Administrator.
+Application Administrator.
+Cloud Application Administrator.
+4. App Registration Creation
+Registers the application and creates a corresponding service principal.
+Outputs the App ID and Object ID.
+5. Optional Configurations
+Exchange Online:
+Connects to Exchange Online.
+Placeholder for adding Exchange Online role assignments.
+Azure RBAC:
+Elevates access to the root scope.
+Assigns the "Reader" role at root and AAD provider scopes.
+6. Assign Microsoft Graph Permissions
+Assigns a predefined list of Microsoft Graph permissions to the application.
+Updates the app with the required resource access.
+7. Grant Admin Consent
+Grants admin consent for the permissions assigned.
+8. Generate Client Secret
+Creates a client secret valid for 6 months.
+Displays the secret for the user to copy (not retrievable later).
+9. Output Details
+Displays the following:
+Tenant ID.
+App ID.
+Client Secret.
+Requirements
+PowerShell modules:
+Microsoft Graph.
+Az (for Azure RBAC).
+ExchangeOnlineManagement (for Exchange Online).
+Necessary admin privileges in Azure AD.
+Connection to Microsoft Graph and Azure.
+Use Cases
+Automating the setup of applications that access Microsoft Graph APIs.
+Configuring Exchange Online or Azure RBAC resources for applications.
+Generating client secrets for secure API access.
+This script is structured for flexibility, allowing optional configurations based on user input (e.g., Exchange Online and Azure RBAC). It also includes error handling and checks to ensure prerequisites and permissions are in place.
